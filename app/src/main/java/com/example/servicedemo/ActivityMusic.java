@@ -6,6 +6,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -38,10 +39,10 @@ public class ActivityMusic extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         super.onStart();
-        // Bind to LocalService
         Intent intent = new Intent(this, MusicService.class);
-        startService(intent);
+        ContextCompat.startForegroundService(this , intent);
         //bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
